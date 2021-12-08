@@ -1,0 +1,72 @@
+<script language="javascript" src="http://ivitrine.buscape.com/bpads.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Férias Luigi</title>
+
+	<link href="style.css" rel="stylesheet" type="text/css">
+
+	<script language="javascript"
+		src="http://images.lojaiplace.com.br/hotsites/black_friday_2016_cadastro/contador.js"></script>
+</head>
+
+<body>
+
+
+	<div class="box_title">
+		Sabe quanto tempo falta para as férias do Luigi?
+	</div>
+
+	<div class="box_ajust">
+		<div class="box_counter">
+			<div class="fonte_contador">
+				<div id="contagemregressiva">
+					<div id="elemento">Carregando</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		function atualizaContador(YY, MM, DD, HH, MI, saida) {
+			var SS = 00;
+			var hoje = new Date();
+			var futuro = new Date(YY, MM - 1, DD, HH, MI, SS);
+
+			var ss = parseInt((futuro - hoje) / 1000);
+			var mm = parseInt(ss / 60);
+			var hh = parseInt(mm / 60);
+			var dd = parseInt(hh / 24);
+
+			ss = ss - (mm * 60);
+			mm = mm - (hh * 60);
+			hh = hh - (dd * 24);
+
+			var faltam = '';
+			faltam += (dd && dd > 1) ? dd + ' dias, <br> ' : (dd == 1 ? '1 dia, ' : '');
+			faltam += (toString(hh).length) ? hh + '&nbsphoras,&nbsp <br>' : '';
+			faltam += (toString(mm).length) ? mm + '&nbspminutos,&nbsp; <br>' : '';
+			faltam += (toString(mm).length) ? ss + '&nbspsegundos&nbsp; <br>' : '';
+
+			if (dd + hh + mm + ss > 0) {
+				document.getElementById(saida).innerHTML = faltam;
+				setTimeout(function () { atualizaContador(YY, MM, DD, HH, MI, saida) }, 1000);
+			} else {
+				document.getElementById(saida).innerHTML = '';
+				setTimeout(function () { atualizaContador(YY, MM, DD, HH, MI, saida) }, 1000);
+			}
+		}
+
+		window.onload = function () {
+			atualizaContador('2021', '12', '24', '11', '59', 'elemento');
+		}
+	</script>
+
+</body>
+
+</html>
